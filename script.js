@@ -15,7 +15,7 @@ window.addEventListener("load", function(){
          alert("All fields are required!");
          event.preventDefault();
       } else if (!isNaN(pName.value) || typeof pName.value !== "string"){
-         alert("Make sure to enter a valid pilot name!");
+         alert("Make sure to enter valid information for each field!");
          event.preventDefault();
       }
       
@@ -25,7 +25,7 @@ window.addEventListener("load", function(){
          alert("All fields are required!");
          event.preventDefault();
       } else if (!isNaN(cPName.value) || typeof cPName.value !== "string"){
-         alert("Make sure to enter valid information for each field copilot!");
+         alert("Make sure to enter valid information for each field!");
          event.preventDefault();
       }
 
