@@ -10,11 +10,12 @@ window.addEventListener("load", function(){
       const fuel = document.querySelector("input[name=fuelLevel]")
       const mass = document.querySelector("input[name=cargoMass]")
       
+
       if (pName.value === ""){
          alert("All fields are required!");
          event.preventDefault();
-      } else if (typeof pName.value !== "string"){
-         alert("Make sure to enter valid information for each field!");
+      } else if (!isNaN(pName.value) || typeof pName.value !== "string"){
+         alert("Make sure to enter a valid pilot name!");
          event.preventDefault();
       }
       
@@ -23,8 +24,8 @@ window.addEventListener("load", function(){
       if (cPName.value === ""){
          alert("All fields are required!");
          event.preventDefault();
-      } else if (typeof cPName.value !== "string"){
-         alert("Make sure to enter valid information for each field!");
+      } else if (!isNaN(cPName.value) || typeof cPName.value !== "string"){
+         alert("Make sure to enter valid information for each field copilot!");
          event.preventDefault();
       }
 
@@ -78,6 +79,7 @@ window.addEventListener("load", function(){
       if(cargoOK && fuelOK) {
          launchStatus.innerHTML = "Shuttle is ready for launch";
          launchStatus.style.color = "green";
+         faultyItems.style.visibility = "hidden";
       }
    })
 })
