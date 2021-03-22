@@ -9,7 +9,8 @@ window.addEventListener("load", function(){
       const cPName = document.querySelector("input[name=copilotName]")
       const fuel = document.querySelector("input[name=fuelLevel]")
       const mass = document.querySelector("input[name=cargoMass]")
-      
+      let pilotOK = false;
+      let copilotOK = false;
 
       if (pName.value === ""){
          alert("All fields are required!");
@@ -17,9 +18,9 @@ window.addEventListener("load", function(){
       } else if (!isNaN(pName.value) || typeof pName.value !== "string"){
          alert("Make sure to enter valid information for each field!");
          event.preventDefault();
+      } else {
+         pilotOK = true;
       }
-      
-
       
       if (cPName.value === ""){
          alert("All fields are required!");
@@ -27,8 +28,9 @@ window.addEventListener("load", function(){
       } else if (!isNaN(cPName.value) || typeof cPName.value !== "string"){
          alert("Make sure to enter valid information for each field!");
          event.preventDefault();
+      } else {
+         copilotOK = true;
       }
-
       
       if (fuel.value === ""){
          alert("All fields are required!");
@@ -76,7 +78,7 @@ window.addEventListener("load", function(){
          cargoOK = false;
       }
       
-      if(cargoOK && fuelOK) {
+      if(cargoOK && fuelOK && pilotOK && copilotOK) {
          launchStatus.innerHTML = "Shuttle is ready for launch";
          launchStatus.style.color = "green";
          faultyItems.style.visibility = "hidden";
