@@ -9,8 +9,7 @@ window.addEventListener("load", function(){
       const cPName = document.querySelector("input[name=copilotName]")
       const fuel = document.querySelector("input[name=fuelLevel]")
       const mass = document.querySelector("input[name=cargoMass]")
-      let pilotOK = false;
-      let copilotOK = false;
+      let inputOK = false;
 
       if (pName.value === ""){
          alert("All fields are required!");
@@ -18,35 +17,26 @@ window.addEventListener("load", function(){
       } else if (!isNaN(pName.value) || typeof pName.value !== "string"){
          alert("Make sure to enter valid information for each field!");
          event.preventDefault();
-      } else {
-         pilotOK = true;
-      }
-      
-      if (cPName.value === ""){
+      } else if (cPName.value === ""){
          alert("All fields are required!");
          event.preventDefault();
       } else if (!isNaN(cPName.value) || typeof cPName.value !== "string"){
          alert("Make sure to enter valid information for each field!");
          event.preventDefault();
-      } else {
-         copilotOK = true;
-      }
-      
-      if (fuel.value === ""){
+      } else if (fuel.value === ""){
          alert("All fields are required!");
          event.preventDefault();
       } else if (isNaN(fuel.value)){
          alert("Make sure to enter valid information for each field!");
          event.preventDefault();
-      }
-
-      
-      if (mass.value === ""){
+      } else if (mass.value === ""){
          alert("All fields are required!");
          event.preventDefault();
       } else if (isNaN(mass.value)){
          alert("Make sure to enter valid information for each field!");
          event.preventDefault();
+      } else {
+         inputOK = true;
       }
 
       const faultyItems = document.getElementById("faultyItems");
@@ -59,7 +49,7 @@ window.addEventListener("load", function(){
 
       const fuelStatus = document.getElementById("fuelStatus");
       const cargoStatus = document.getElementById("cargoStatus");
-      let fuelOK= true;
+      let fuelOK = true;
       let cargoOK = true;
       
       if (fuel.value< 10000){
@@ -77,8 +67,13 @@ window.addEventListener("load", function(){
          launchStatus.style.color = "red";
          cargoOK = false;
       }
+
+      if(!inputOK){
+         launchStatus.innerHTML = "Shuttle not ready for launch";
+         launchStatus.style.color = "red";
+      }
       
-      if(cargoOK && fuelOK && pilotOK && copilotOK) {
+      if(cargoOK && fuelOK && inputOK) {
          launchStatus.innerHTML = "Shuttle is ready for launch";
          launchStatus.style.color = "green";
          faultyItems.style.visibility = "hidden";
